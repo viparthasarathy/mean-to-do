@@ -17,7 +17,7 @@ const Todo = mongoose.model('Todo', {
   text : String
 });
 
-app.get('/apitodos', (req, res) => {
+app.get('/api/todos', (req, res) => {
   Todo.find((err, todos) => {
     if (err) { res.send(err); }
     res.json(todos);
@@ -52,8 +52,8 @@ app.delete('/api/todos/:todo_id', (req, res) => {
   });
 });
 
-app.get('*', (res, req) => {
-  res.sendfile('./public/index.html');
+app.get('*', (req, res) => {
+  res.sendFile('./public/index.html');
 });
 
 app.listen(8080, function() {
