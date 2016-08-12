@@ -39,7 +39,7 @@ app.post('/api/todos', (req, res) => {
   });
 });
 
-app.delete('/api/toos/:todo_id', (req, res) => {
+app.delete('/api/todos/:todo_id', (req, res) => {
   Todo.remove({
     _id: req.params.todo_id
   }, (err, todo) => {
@@ -50,6 +50,10 @@ app.delete('/api/toos/:todo_id', (req, res) => {
       res.json(todos);
     });
   });
+});
+
+app.get('*', (res, req) => {
+  res.sendfile('./public/index.html');
 });
 
 app.listen(8080, function() {
